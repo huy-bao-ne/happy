@@ -18,10 +18,56 @@
             <label for="toggleGreeting" class="btn-show">Click vào đây nè🫶</label>
 
             <div class="greeting">
-                <p>Chúc bạn một năm mới an khang thịnh vượng!</p>
+                <div class="options">
+                    <div class="option" id="lixi">
+                        <span class="icon">💰</span>
+                        <p>Lì xì Huy BảoBảo</p>
+                    </div>
+                    <div class="option" id="yeuhuybao">
+                        <span class="icon">👊</span>
+                        <p>Có con c*kk</p>
+                    </div>
+                </div>
+                <div id="selectedGreeting"></div> <!-- Hiển thị lựa chọn người dùng -->
+                <div id="bankInfo" style="display: none; color: #007bff; font-weight: bold; text-align: center; margin-top: 20px;"></div> <!-- Hiển thị thông tin MB Bank -->
+                <div id="loveMessage" style="display: none; color: #ff6347; font-weight: bold; text-align: center; margin-top: 20px;"></div> <!-- Hiển thị thông điệp yêu Huy Bảo -->
+                <img id="specialImage" src="https://ttl.edu.vn/public/upload/2024/10/jack-meme-02.webp" alt="Hình ảnh đặc biệt" style="display: none; max-width: 100%; width: 400px; margin-top: 20px; border-radius: 10px;"> <!-- Hình ảnh sẽ xuất hiện -->
             </div>
         </div>
     </div>
     <script type="text/javascript" src="fireworks.js"></script>
+    <script>
+        // JavaScript để hiển thị lựa chọn người dùng
+        const greetingOptions = document.querySelectorAll('.option');
+        const selectedGreeting = document.getElementById('selectedGreeting');
+        const bankInfo = document.getElementById('bankInfo');
+        const loveMessage = document.getElementById('loveMessage');
+        const specialImage = document.getElementById('specialImage');
+        
+        greetingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                selectedGreeting.textContent = `Bạn đã chọn: ${option.querySelector('p').textContent}`;
+                
+                // Kiểm tra lựa chọn và hiển thị thông báo tương ứng
+                if (option.id === 'lixi') {
+                    bankInfo.style.display = 'block';
+                    bankInfo.textContent = 'Huy Bảo cảm ơn he he❤️ 56090588889999 MB Bank';
+                    loveMessage.style.display = 'none';
+                    specialImage.style.display = 'none'; // Ẩn ảnh nếu chọn Lì xì
+                } else if (option.id === 'yeuhuybao') {
+                    loveMessage.style.display = 'block';
+                    loveMessage.textContent = 'Em hư quá hư rồi';
+                    bankInfo.style.display = 'none';
+                    specialImage.style.display = 'none'; // Ẩn ảnh lúc đầu
+                    
+                    // Đợi 22 giây và hiển thị ảnh với hiệu ứng bất chợt
+                    setTimeout(() => {
+                        specialImage.style.display = 'block'; // Hiển thị ảnh sau 3s
+                        specialImage.classList.add('showImage'); // Áp dụng lớp CSS cho hiệu ứng phóng to bất ngờ
+                    }, 2000);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
