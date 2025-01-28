@@ -1,0 +1,130 @@
+/* Cấu hình chung cho nền */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Nền và container */
+.background {
+    position: relative;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('background-image.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container chính */
+.container {
+    text-align: center;
+    max-width: 80%;
+    z-index: 2;
+    position: relative;
+}
+
+/* Tiêu đề */
+h1 {
+    font-size: 4em;
+    margin: 20px 0;
+    color: #ff9800;
+    text-shadow: 0 0 30px rgba(255, 152, 0, 0.8), 0 0 60px rgba(255, 152, 0, 0.6);
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Mô tả */
+p {
+    font-size: 1.8em;
+    margin: 20px 0;
+    text-shadow: 1px 1px 20px rgba(255, 255, 255, 0.7);
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* Tạo hiệu ứng checkbox */
+.toggleGreeting {
+    display: none;
+}
+
+/* Nút bấm */
+.btn-show {
+    font-size: 1.5em;
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+}
+
+.btn-show:hover {
+    background-color: #ff5722;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+}
+
+.btn-show:active {
+    transform: scale(0.95);
+}
+
+/* Hiển thị lời chúc với hiệu ứng */
+.greeting {
+    display: none;
+    font-size: 2em;
+    margin-top: 30px;
+    animation: fadeIn 1.5s ease-in-out forwards, slideUp 1s ease-in-out;
+    color: #ffeb3b;
+    text-shadow: 1px 1px 15px rgba(255, 235, 59, 0.8);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Hiệu ứng xuất hiện và di chuyển */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Hiệu ứng phát sáng cho tiêu đề */
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 152, 0, 0.6), 0 0 20px rgba(255, 152, 0, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 152, 0, 0.8), 0 0 30px rgba(255, 152, 0, 0.6);
+    }
+}
+
+/* Hiển thị lời chúc khi checkbox được tick */
+.toggleGreeting:checked + .btn-show + .greeting {
+    display: block;
+}
+
+/* Thêm hiệu ứng cho canvas pháo bông */
+canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
