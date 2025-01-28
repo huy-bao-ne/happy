@@ -118,13 +118,112 @@ p {
     display: block;
 }
 
-/* Thêm hiệu ứng cho canvas pháo bông */
-canvas {
+/* CSS cho phần lựa chọn đẹp hơn */
+.greeting .options {
+    display: none;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#toggleGreeting:checked + .btn-show + .greeting .options {
+    display: grid;
+}
+
+.option {
+    background-color: #fffbf0;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, scale 0.3s;
+    width: 180px;
+    position: relative;
+    overflow: hidden;
+}
+
+.option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    background-color: #ffe135;
+}
+
+.option:hover .icon {
+    transform: rotate(15deg);
+}
+
+.option p {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.option:hover p {
+    color: #fff;
+}
+
+.icon {
+    font-size: 40px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
+    color: #007bff;
+}
+
+#selectedGreeting {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+#selectedGreeting.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#bankInfo {
+    font-size: 18px;
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#loveMessage {
+    font-size: 20px;
+    color: #ff6347; /* Màu đỏ tươi cho thông điệp yêu */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Sửa hình ảnh để nó xuất hiện ở giữa và chồng lên mọi thứ */
+#specialImage {
+    display: none;
+    width: 800px;
+    height: 500px; /* Giới hạn chiều cao */
     position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 1;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Đặt ảnh chính giữa và bắt đầu với kích thước nhỏ */
+    z-index: 9999; /* Đảm bảo ảnh chồng lên các phần tử khác */
+    opacity: 0; /* Ảnh bắt đầu ẩn */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Hiệu ứng xuất hiện và phóng to */
+}
+
+/* Lớp CSS khi ảnh xuất hiện */
+#specialImage.showImage {
+    opacity: 1; /* Hiển thị ảnh */
+    transform: translate(-50%, -50%) scale(1); /* Phóng to ảnh */
 }
